@@ -1,0 +1,16 @@
+ion-content{
+    background-color: #233043;
+}
+
+.list{
+    font-family: georgia;
+}
+
+.scroll{
+    font-family: georgia;
+    color: grey;
+}
+
+ion-nav-bar{
+    color: black;
+}
