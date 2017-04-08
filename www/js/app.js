@@ -1,19 +1,32 @@
-angular.module('App', ['ionic'])
+angular.module('App', ['ionic', 'firebase'])
 
 ///// WEATHER SERVICE FACTORY //////////////////////////////////////////////////
-.factory('weatherService',['$http', function($http){
+.factory('weatherService',['$sce','$http','$firebaseArray', function($sce,$http,$firebaseArray){
   
   //create service object
-  var weatherService = {};
-  
-    //get current rest conditions
-  weatherService.getWeather = function(){
-    return $http.get('https://ionic-in-action-api.herokuapp.com/weather');
-  };
+				var weatherService = {};
+				
+				//DarkSky API key
+				var key = "cbc599f65e3253df70f69be7a60b673e";
+				
+				weatherService.getCurrentConditions = function(location){
+					
+					var url = "https://api.darksky.net/forecast/" + key + 
+								"/" + location.lat + "," + location.lon;
+								
+					var trustedUrl = $sce.trustAsResourceUrl(url);
+					console.log("Weather Api Url: ");		
+					console.log(url);
+					return $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'});
+					//return $http.get(trustedUrl);
+					
+					
+				};
+				
+				return weatherService;
+				
+		}])
 
-  return weatherService;
-
-}])
 .factory("localStorageService", function($window, $rootScope) {
     
     angular.element($window).on('storage', function(event) {
@@ -37,6 +50,7 @@ angular.module('App', ['ionic'])
         }
     };
 })
+
 .config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider

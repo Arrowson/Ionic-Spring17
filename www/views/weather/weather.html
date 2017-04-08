@@ -1,12 +1,16 @@
 <ion-view view-title="Current Weather">
   <ion-content>
+    <select ng-model="wc.selected_city"
+    ng-options="unit.name for unit in wc.cities">
+    </select>
     <div class="list">
-      <div class="item">Current Conditions: {{wc.weather[0].main}}</div>
-      <div class="item">Current Temperature: {{wc.weather.main.temp}}&deg;</div>
-      <div class="item">Humidity: {{wc.weather.main.humidity}}%</div>
-      <div class="item">Today's High: {{wc.weather.main.temp_max}}&deg;</div>
-      <div class="item">Today's Low: {{wc.weather.main.temp_min}}&deg;</div>
-      <div class="item">Wind: {{wc.weather.wind.speed}}mph, {{wc.weather.wind.deg | directionFilter}}</div>
+      <div class="item">Current Conditions: {{wc.selected_city.weather.currently}}</div>
+      <div class="item">Current temperature: {{wc.selected_city.weather.temperature}}</div>
+      <div class="item">Current WindSpeed: {{wc.selected_city.weather.windSpeed}}</div>
+      <div class="item">Current WindBearing: {{wc.selected_city.weather.windBearing}}</div>
+
+
+
     </div>
   </ion-content>
 </ion-view>

@@ -18,6 +18,21 @@
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDp76Qtc4GxLRLJRTuf81kiekIxftNNpdo",
+        authDomain: "chapter4-b328b.firebaseapp.com",
+        databaseURL: "https://chapter4-b328b.firebaseio.com",
+        projectId: "chapter4-b328b",
+        storageBucket: "chapter4-b328b.appspot.com",
+        messagingSenderId: "508476128615"
+      };
+      firebase.initializeApp(config);
+    </script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
